@@ -1,0 +1,34 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile           # set the wanted php version through the corresponding Dockerfile
+    ports:
+      - "8888:80"                      # map your computer port to the container port
+    depends_on:
+      - db
+    volumes:
+      - ./html:/var/www/html           # map content of ./html in your computer to /var/www/html of container
+      - ./php_conf/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini    # map xdebug.ini into the container
+      - ./php_conf/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini # map error_reporting.ini into the container
+      - ./php_conf/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini                 # map uploads.ini into the container
+  db:
+    image: mariadb:10.11               # set the database server and version. Example: mariadb:10.11 or mysql:9.4
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234       # set mysql root pw or use: MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=blogdb          # this is optional, name a database to be created on image creation
+      - MYSQL_USER=blog                # this is optional, name a user to be created on image create
+      - MYSQL_PASSWORD=1234            # this is optional, password for the above created user
+      - MYSQL_TCP_PORT=3306            # this is optional, default port is 3306
+    volumes:
+      - ./db_data:/var/lib/mysql       # map content of ./db_data in your computer to /var/lib/mysql of container
+  phpmyadmin:
+    image: phpmyadmin:5.2.3            # set the phpmyadmin version. Example: phpmyadmin:5.2.3
+    ports:
+      - "8080:80"                      # map your computer port to the container port
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - UPLOAD_LIMIT=512M              # set upload_max_filesize and post_max_size
