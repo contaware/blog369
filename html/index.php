@@ -42,17 +42,27 @@ if (isset($_POST['submit'])) {
         <form action="index.php" method="post" class="mt-4 w-75">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" id="name" name="name" <?= "value=\"$name\"" ?> placeholder="Enter your name">
+                <input  type="text" 
+                        class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
+                        id="name" name="name" 
+                        value="<?= htmlspecialchars($name, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" 
+                        placeholder="Enter your name">
                 <div class="invalid-feedback"><?= $nameErr ?></div>
             </div>
             <div class="mb-3">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" id="email" name="email" <?= "value=\"$email\"" ?> placeholder="Enter your email">
+                <input  type="email" 
+                        class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
+                        id="email" name="email" 
+                        value="<?= htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>" 
+                        placeholder="Enter your email">
                 <div class="invalid-feedback"><?= $emailErr ?></div>
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Feedback</label>
-                <textarea class="form-control <?= $bodyErr ? 'is-invalid' : '' ?>" id="body" name="body" <?= "value=\"$body\"" ?> placeholder="Enter your feedback"></textarea>
+                <textarea   class="form-control <?= $bodyErr ? 'is-invalid' : '' ?>" 
+                            id="body" name="body" 
+                            placeholder="Enter your feedback"><?= htmlspecialchars($body, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></textarea>
                 <div class="invalid-feedback"><?= $bodyErr ?></div>
             </div>
             <div class="mb-3">
