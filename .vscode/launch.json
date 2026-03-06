@@ -4,9 +4,19 @@
     //    See also "Remote Host Debugging" section here:
     //    https://github.com/xdebug/vscode-php-debug
     //
-    // 2. "Launch currently open script" is used to debug your PHP  
+    // 2. "Launch currently open script" is used to debug your PHP 
     //    files with a local PHP installation having xdebug support. 
     //    The PHP binary must be in your PATH.
+    //    User input:
+    //    - By default stdout/stderr/stdin are routed through the 
+    //      DEBUG CONSOLE. When the debugger stops at a breakpoint, 
+    //      the edit box at the bottom permits expressions injection. 
+    //      When it is not stopped, the edit box is supposed to send 
+    //      your text to stdin, but unfortunately this does not work 
+    //      right now.
+    //    - With the "console": "integratedTerminal" configuration, 
+    //      the program runs in the TERMINAL which permits normal 
+    //      user input (there is also "console": "externalTerminal").
     "version": "0.2.0",
     "configurations": [
         {
@@ -31,7 +41,8 @@
             "env": {
                 "XDEBUG_MODE": "debug,develop",
                 "XDEBUG_CONFIG": "client_port=${port}"
-            }
+            },
+            "console": "integratedTerminal"
         }
     ]
 }
