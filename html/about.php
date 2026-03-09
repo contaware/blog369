@@ -1,4 +1,7 @@
-<?php require_once __DIR__ . '/inc/header.php'; ?>
+<?php 
+require_once __DIR__ . '/inc/configuration.php';
+require_once __DIR__ . '/inc/header.php';
+?>
 <main>
     <div class="container d-flex flex-column align-items-center">
         <h2>About</h2>

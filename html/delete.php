@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/inc/configuration.php';
 require_once __DIR__ . '/inc/database.php';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
