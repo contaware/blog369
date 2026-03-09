@@ -32,7 +32,7 @@ unset($item); // break reference with last element
                             by <?= $item['name'] ?> on <?= $item['date'] ?>
                         </div>
                         <div class="text-secondary mt-2">
-                            E-Mail <?= "<a href=\"mailto:{$item['email']}\">{$item['email']}</a>\n" ?>
+                            Email <?= "<a href=\"mailto:{$item['email']}\">{$item['email']}</a>\n" ?>
                         </div>
                         <div class="text-danger mt-2">
                             Delete <?= "<a href=\"delete.php?id={$item['id']}\">this entry (id {$item['id']})</a>\n" ?>
