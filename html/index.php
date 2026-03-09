@@ -4,19 +4,19 @@ require_once __DIR__ . '/inc/database.php';
 $name = $email = $body = '';
 $nameErr = $emailErr = $bodyErr = '';
 if (isset($_POST['submit'])) {
-    if (empty($_POST['name']))
-        $nameErr = 'Name is required';
-    else
+    if (isset($_POST['name']) && strlen($_POST['name']) > 0)
         $name = $_POST['name'];
-    if (empty($_POST['email']))
-        $emailErr = 'E-Mail is required';
     else
+        $nameErr = 'Name is required';
+    if (isset($_POST['email']) && strlen($_POST['email']) > 0)
         $email = $_POST['email'];
-    if (empty($_POST['body']))
-        $bodyErr = 'Feedback is required';
     else
+        $emailErr = 'E-Mail is required';
+    if (isset($_POST['body']) && strlen($_POST['body']) > 0)
         $body = $_POST['body'];
-    if (empty($nameErr) && empty($emailErr) && empty($bodyErr)) {
+    else
+        $bodyErr = 'Feedback is required';
+    if ($name !== '' && $email !== '' && $body !== '') {
         try {
             $sql = "INSERT INTO feedback (name, email, body) VALUES (?, ?, ?)";
             $res = $conn->prepare($sql);
