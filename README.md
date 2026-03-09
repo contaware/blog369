@@ -1,6 +1,6 @@
 # Blog 369
 
-This project demonstrates one method of programming a PHP blog connected to a database of your choice using the [PHP Data Objects (PDO)](https://www.php.net/manual/book.pdo.php) extension.
+This project demonstrates one method of programming a PHP blog connected to a mysql/mariadb database using the [PHP Data Objects (PDO)](https://www.php.net/manual/book.pdo.php) extension.
 
 It has not been tested in a production environment, before using it online, make sure you understand the code and carry out your own safety tests.
 
