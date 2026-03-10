@@ -12,6 +12,44 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
     <!-- For production use the corresponding *.min.css versions. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        /* Breakpoint indicator (remove that for production) */
+        body::before {
+            content: "xs";
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+            position: fixed;
+            top: 14px;
+            right: 17px;
+            z-index: 1100;
+        }
+        @media (min-width: 576px) {
+            body::before {
+                content: "sm";
+            }
+        }
+        @media (min-width: 768px) {
+            body::before {
+                content: "md";
+            }
+        }
+        @media (min-width: 992px) {
+            body::before {
+                content: "lg";
+            }
+        }
+        @media (min-width: 1200px) {
+            body::before {
+                content: "xl";
+            }
+        }
+        @media (min-width: 1400px) {
+            body::before {
+                content: "xxl";
+            }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-light mb-4">
