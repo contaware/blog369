@@ -7,21 +7,42 @@ function create_tables() {
 
     // Create feedback table if not existing
     try {
-        $sql = "CREATE TABLE IF NOT EXISTS feedback (
-                    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                    name VARCHAR(255),
-                    email VARCHAR(255),
-                    body LONGTEXT,
-                    date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-            )";
+        $sql = "CREATE TABLE feedback (
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255),
+            email VARCHAR(255),
+            body LONGTEXT,
+            date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )";
         $conn->exec($sql);
-        $msg .= "'feedback' table OK\n";
+        $msg .= "Created 'feedback' table\n";
     }
     catch (Throwable $e) {
         $msg .= "Could not create 'feedback' table: {$e->getMessage()}\n";
-        return $msg;
     }
+
+    // Create users table if not existing
+    // role supports: 'user' or 'admin'
+    // (do not use the non-portable ENUM data type for it)
+    try {
+        $sql = "CREATE TABLE users (
+            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) UNIQUE NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            role VARCHAR(255) NOT NULL DEFAULT 'user',
+            date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        )";
+        $conn->exec($sql);
+        $msg .= "Created 'users' table\n";
+    }
+    catch (Throwable $e) {
+        $msg .= "Could not create 'users' table: {$e->getMessage()}\n";
+    }
+
     // Add more tables creation here
+    // ...
+
     return $msg;
 }
 ?>
