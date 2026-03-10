@@ -83,7 +83,7 @@ function getUser($id) {
     $user = null;
     try {
         $res = $conn->prepare("SELECT id, name, email, role, date FROM users WHERE id = ?");
-        $res->bindValue(1, $id);
+        $res->bindValue(1, (int)$id, PDO::PARAM_INT);
         $res->execute();
         $user = $res->fetch(PDO::FETCH_ASSOC);
     }
