@@ -40,7 +40,7 @@ function loginUser($email, $password) {
     // Fetch user from db
     $user = null;
     try {
-        $res = $conn->prepare("SELECT id, name, email, password, role FROM users WHERE email = ?");
+        $res = $conn->prepare("SELECT id, name, email, password, role, date FROM users WHERE email = ?");
         $res->bindValue(1, $email);
         $res->execute();
         $user = $res->fetch(PDO::FETCH_ASSOC);
@@ -55,7 +55,8 @@ function loginUser($email, $password) {
             'id' => $user['id'],
             'name' => $user['name'],
             'email' => $user['email'],
-            'role' => $user['role']
+            'role' => $user['role'],
+            'date' => $user['date']
         ];
         return true;
     }
@@ -73,4 +74,22 @@ function getCurrentUser() {
 
 function logoutUser() {
     unset($_SESSION['user']);
+}
+
+function getUser($id) {
+    global $conn;
+    
+    // Fetch user from db
+    $user = null;
+    try {
+        $res = $conn->prepare("SELECT id, name, email, role, date FROM users WHERE id = ?");
+        $res->bindValue(1, $id);
+        $res->execute();
+        $user = $res->fetch(PDO::FETCH_ASSOC);
+    }
+    catch (Throwable $e) {
+        die(db_maintenance_link($e));
+    }
+    
+    return $user;
 }

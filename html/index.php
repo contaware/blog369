@@ -10,28 +10,24 @@ if (!isLoggedIn()) {
 }
 
 // Process form data
-$name = $email = $body = '';
-$nameErr = $emailErr = $bodyErr = '';
+$title = $body = '';
+$titleErr = $bodyErr = '';
 if (isset($_POST['submit'])) {
-    if (isset($_POST['name']) && strlen($_POST['name']) > 0)
-        $name = $_POST['name'];
+    if (isset($_POST['title']) && strlen($_POST['title']) > 0)
+        $title = $_POST['title'];
     else
-        $nameErr = 'Name is required';
-    if (isset($_POST['email']) && strlen($_POST['email']) > 0)
-        $email = $_POST['email'];
-    else
-        $emailErr = 'Email is required';
+        $titleErr = 'Title is required';
     if (isset($_POST['body']) && strlen($_POST['body']) > 0)
         $body = $_POST['body'];
     else
         $bodyErr = 'Feedback is required';
-    if ($nameErr === '' && $emailErr === '' && $bodyErr === '') {
+    if ($titleErr === '' && $bodyErr === '') {
         try {
-            $sql = "INSERT INTO feedback (name, email, body) VALUES (?, ?, ?)";
+            $sql = "INSERT INTO feedback (title, body, user_id) VALUES (?, ?, ?)";
             $res = $conn->prepare($sql);
-            $res->bindValue(1, $name);
-            $res->bindValue(2, $email);
-            $res->bindValue(3, $body);
+            $res->bindValue(1, $title);
+            $res->bindValue(2, $body);
+            $res->bindValue(3, getCurrentUser()['id']);
             $res->execute();
         }
         catch (Throwable $e) {
@@ -50,20 +46,12 @@ if (isset($_POST['submit'])) {
         <p class="lead text-center">Leave feedback on <?= BLOG_NAME ?></p>
         <form method="post" class="mt-4 w-75">
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="title" class="form-label">Title</label>
                 <input  type="text" 
-                        class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
-                        id="name" name="name" 
-                        value="<?= htmlspecialchars($name, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
-                <div class="invalid-feedback"><?= $nameErr ?></div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">Email</label>
-                <input  type="email" 
-                        class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
-                        id="email" name="email" 
-                        value="<?= htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
-                <div class="invalid-feedback"><?= $emailErr ?></div>
+                        class="form-control <?= $titleErr ? 'is-invalid' : '' ?>" 
+                        id="title" name="title" 
+                        value="<?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                <div class="invalid-feedback"><?= $titleErr ?></div>
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Feedback</label>

@@ -10,8 +10,7 @@ catch (Throwable $e) {
     die(db_maintenance_link($e));
 }
 foreach ($feedback as &$item) {
-    $item['name'] = htmlspecialchars($item['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $item['email'] = htmlspecialchars($item['email'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $item['title'] = htmlspecialchars($item['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $item['body'] = htmlspecialchars($item['body'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
     $item['date'] = htmlspecialchars($item['date'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
@@ -25,14 +24,18 @@ unset($item); // break reference with last element
             <p class="lead mt3">There is no feedback</p>
         <?php else: ?>
             <?php foreach ($feedback as $item): ?>
-                <div class="card my-3 w-75">
-                    <div class="card-body text-center">
-                        <?= $item['body'] ?>
+                <div class="card my-3 p-2 text-center w-75">
+                    <?php $user = getUser($item['user_id']); ?>
+                    <h4 class="card-title"><?= $item['title'] ?></h4>
+                    <div class="card-body">
+                        <p><?= $item['body'] ?></p>
                         <div class="text-secondary mt-2">
-                            by <?= $item['name'] ?> on <?= $item['date'] ?>
+                            <?php $name = htmlspecialchars($user['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
+                            by <?= $name ?> on <?= $item['date'] ?>
                         </div>
                         <div class="text-secondary mt-2">
-                            Email <?= "<a href=\"mailto:{$item['email']}\">{$item['email']}</a>\n" ?>
+                            <?php $email = htmlspecialchars($user['email'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
+                            Email <?= "<a href=\"mailto:$email\">$email</a>\n" ?>
                         </div>
                         <div class="text-danger mt-2">
                             Delete <?= "<a href=\"delete.php?id={$item['id']}\">this entry (id {$item['id']})</a>\n" ?>
