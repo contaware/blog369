@@ -24,22 +24,26 @@ unset($item); // break reference with last element
             <p class="lead mt3">There is no feedback</p>
         <?php else: ?>
             <?php foreach ($feedback as $item): ?>
-                <div class="card my-3 p-2 text-center w-75">
+                <div class="card my-3 p-2 w-75">
                     <?php $user = getUser($item['user_id']); ?>
-                    <h4 class="card-title"><?= $item['title'] ?></h4>
+                    <div class="row text-center justify-content-between">
+                        <div class="col-sm-6 col-lg-4 order-lg-0">
+                            <div class="text-secondary text-sm-start">
+                                <?php $name = htmlspecialchars($user['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
+                                <em><?= $name ?></em><br><?= $item['date'] ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-4 order-lg-2">
+                            <div class="text-danger text-sm-end">
+                                <?= "<a class=\"btn btn-danger\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-lg-4 order-lg-1">
+                            <h4 class="card-title" style="text-wrap: balance;"><?= $item['title'] ?></h4>
+                        </div>
+                    </div>
                     <div class="card-body">
-                        <p><?= $item['body'] ?></p>
-                        <div class="text-secondary mt-2">
-                            <?php $name = htmlspecialchars($user['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
-                            by <?= $name ?> on <?= $item['date'] ?>
-                        </div>
-                        <div class="text-secondary mt-2">
-                            <?php $email = htmlspecialchars($user['email'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
-                            Email <?= "<a href=\"mailto:$email\">$email</a>\n" ?>
-                        </div>
-                        <div class="text-danger mt-2">
-                            Delete <?= "<a href=\"delete.php?id={$item['id']}\">this entry (id {$item['id']})</a>\n" ?>
-                        </div>
+                        <p style="text-wrap: pretty;"><?= $item['body'] ?></p>
                     </div>
                 </div>
             <?php endforeach; ?>
