@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
         <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid mb-3" alt="logo">
         <h2>Feedback</h2>
         <p class="lead text-center">Leave feedback on <?= BLOG_NAME ?></p>
-        <form action="index.php" method="post" class="mt-4 w-75">
+        <form method="post" class="mt-4 w-75">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input  type="text" 
