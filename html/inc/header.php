@@ -1,6 +1,7 @@
 <?php 
 require_once __DIR__ . '/configuration.php'; 
 require_once __DIR__ . '/auth.php';
+$page = basename($_SERVER['SCRIPT_FILENAME']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,13 +21,16 @@ require_once __DIR__ . '/auth.php';
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.php">Home</a>
+                        <a  class="nav-link <?= $page === 'index.php' ? 'active' : '' ?>" 
+                            href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="feedback.php">Feedbacks</a>
+                        <a  class="nav-link <?= $page === 'feedback.php' ? 'active' : '' ?>" 
+                            href="feedback.php">Feedbacks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php">About</a>
+                        <a  class="nav-link <?= $page === 'about.php' ? 'active' : '' ?>" 
+                            href="about.php">About</a>
                     </li>
                     <?php if (isLoggedIn()): ?>
                         <li class="nav-item dropdown">
@@ -42,10 +46,12 @@ require_once __DIR__ . '/auth.php';
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="login.php">Login</a>
+                            <a  class="nav-link <?= $page === 'login.php' ? 'active' : '' ?>" 
+                                href="login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="register.php">Register</a>
+                            <a  class="nav-link <?= $page === 'register.php' ? 'active' : '' ?>" 
+                                href="register.php">Register</a>
                         </li>
                     <?php endif; ?>
                 </ul>
