@@ -1,6 +1,14 @@
 <?php
 require_once __DIR__ . '/inc/configuration.php';
 require_once __DIR__ . '/inc/auth.php';
+
+// If already logged-in, head to home page
+if (isLoggedIn()) {
+    header('Location: index.php');
+    exit;
+}
+
+// Process form data
 $email = $password = '';
 $emailErr = $pwErr = $loginErr = '';
 if (isset($_POST['submit'])) {
@@ -20,10 +28,6 @@ if (isset($_POST['submit'])) {
         else
             $loginErr = 'Invalid email or password';
     }
-}
-if (isLoggedIn()) {
-    header('Location: index.php');
-    exit;
 }
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>
