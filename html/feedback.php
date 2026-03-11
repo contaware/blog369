@@ -35,7 +35,7 @@ unset($item); // break reference with last element
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 order-lg-2">
-                            <?php if (isCurrentUser($item['user_id'])): ?>
+                            <?php if (isCurrentUser($item['user_id']) || isAdmin()): ?>
                                 <div class="text-danger text-sm-end">
                                     <?= "<a class=\"btn btn-danger\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
                                 </div>

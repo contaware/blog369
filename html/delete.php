@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
         $user_id = $res->fetchColumn();
         if ($user_id === false) // use === because a 0 int is a valid id
             die("Error: could not find the entry with id=$id");
-        if (!isCurrentUser($user_id))
+        if (!isCurrentUser($user_id) && !isAdmin())
             die("Error: not allowed to delete the entry with id=$id");
     }
     catch (Throwable $e) {

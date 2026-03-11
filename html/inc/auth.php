@@ -68,6 +68,13 @@ function isLoggedIn() {
     return isset($_SESSION['user']);
 }
 
+function isAdmin() {
+    if (isLoggedIn()) {
+        return $_SESSION['user']['role'] === 'admin';
+    }
+    return false;
+}
+
 function getCurrentUser() {
     return $_SESSION['user'] ?? null;
 }
