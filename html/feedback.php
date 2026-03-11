@@ -10,12 +10,6 @@ try {
 catch (Throwable $e) {
     die(db_maintenance_link($e));
 }
-foreach ($feedback as &$item) {
-    $item['title'] = htmlSafe($item['title']);
-    $item['body'] = htmlSafe($item['body']);
-    $item['date'] = htmlSafe($item['date']);
-}
-unset($item); // break reference with last element
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>
 <main>
@@ -26,12 +20,11 @@ unset($item); // break reference with last element
         <?php else: ?>
             <?php foreach ($feedback as $item): ?>
                 <div class="card my-3 p-2 w-75">
-                    <?php $user = getUser($item['user_id']); ?>
                     <div class="row text-center justify-content-between">
                         <div class="col-sm-6 col-lg-4 order-lg-0">
                             <div class="text-secondary text-sm-start">
-                                <?php $name = htmlSafe($user['name']); ?>
-                                <em><?= $name ?></em><br><?= $item['date'] ?>
+                                <em><?= htmlSafe(getUser($item['user_id'])['name']) ?></em><br>
+                                <?= htmlSafe($item['date']) ?>
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 order-lg-2">
@@ -42,11 +35,15 @@ unset($item); // break reference with last element
                             <?php endif; ?>
                         </div>
                         <div class="col-sm-12 col-lg-4 order-lg-1">
-                            <h4 class="card-title" style="text-wrap: balance;"><?= $item['title'] ?></h4>
+                            <h4 class="card-title" style="text-wrap: balance;">
+                                <?= htmlSafe($item['title']) ?>
+                            </h4>
                         </div>
                     </div>
                     <div class="card-body">
-                        <p style="text-wrap: pretty;"><?= $item['body'] ?></p>
+                        <p style="text-wrap: pretty;">
+                            <?= htmlSafe($item['body']) ?>
+                        </p>
                     </div>
                 </div>
             <?php endforeach; ?>
