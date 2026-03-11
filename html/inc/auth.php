@@ -76,6 +76,13 @@ function logoutUser() {
     unset($_SESSION['user']);
 }
 
+function isCurrentUser($id) {
+    if (isLoggedIn()) {
+        return $_SESSION['user']['id'] === $id;
+    }
+    return false;
+}
+
 function getUser($id) {
     global $conn;
     

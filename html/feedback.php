@@ -1,8 +1,9 @@
 <?php
 require_once __DIR__ . '/inc/configuration.php';
+require_once __DIR__ . '/inc/auth.php';
 require_once __DIR__ . '/inc/database.php';
 try {
-    $sql = 'SELECT * FROM feedback';
+    $sql = "SELECT * FROM feedback";
     $res = $conn->query($sql);
     $feedback = $res->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -34,9 +35,11 @@ unset($item); // break reference with last element
                             </div>
                         </div>
                         <div class="col-sm-6 col-lg-4 order-lg-2">
-                            <div class="text-danger text-sm-end">
-                                <?= "<a class=\"btn btn-danger\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
-                            </div>
+                            <?php if (isCurrentUser($item['user_id'])): ?>
+                                <div class="text-danger text-sm-end">
+                                    <?= "<a class=\"btn btn-danger\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
                         <div class="col-sm-12 col-lg-4 order-lg-1">
                             <h4 class="card-title" style="text-wrap: balance;"><?= $item['title'] ?></h4>
