@@ -53,7 +53,7 @@ function create_tables() {
         <p class="text-center">
             <?php
             $out = create_tables();
-            $out = htmlspecialchars($out, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+            $out = htmlSafe($out);
             $out = nl2br($out);
             echo $out;
             ?>

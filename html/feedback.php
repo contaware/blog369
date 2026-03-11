@@ -11,9 +11,9 @@ catch (Throwable $e) {
     die(db_maintenance_link($e));
 }
 foreach ($feedback as &$item) {
-    $item['title'] = htmlspecialchars($item['title'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $item['body'] = htmlspecialchars($item['body'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
-    $item['date'] = htmlspecialchars($item['date'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
+    $item['title'] = htmlSafe($item['title']);
+    $item['body'] = htmlSafe($item['body']);
+    $item['date'] = htmlSafe($item['date']);
 }
 unset($item); // break reference with last element
 ?>
@@ -30,7 +30,7 @@ unset($item); // break reference with last element
                     <div class="row text-center justify-content-between">
                         <div class="col-sm-6 col-lg-4 order-lg-0">
                             <div class="text-secondary text-sm-start">
-                                <?php $name = htmlspecialchars($user['name'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8'); ?>
+                                <?php $name = htmlSafe($user['name']); ?>
                                 <em><?= $name ?></em><br><?= $item['date'] ?>
                             </div>
                         </div>

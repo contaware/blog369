@@ -69,7 +69,7 @@ if (isset($_POST['submit'])) {
                                 <input  type="text" 
                                         class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
                                         id="name" name="name"
-                                        value="<?= htmlspecialchars($name, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                                        value="<?= htmlSafe($name) ?>">
                                 <div class="invalid-feedback"><?= $nameErr ?></div>
                             </div>
                             <div class="mb-3">
@@ -77,7 +77,7 @@ if (isset($_POST['submit'])) {
                                 <input  type="email" 
                                         class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
                                         id="email" name="email"
-                                        value="<?= htmlspecialchars($email, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                                        value="<?= htmlSafe($email) ?>">
                                 <div class="invalid-feedback"><?= $emailErr ?></div>
                             </div>
                             <div class="mb-3">
@@ -85,7 +85,7 @@ if (isset($_POST['submit'])) {
                                 <input  type="password" 
                                         class="form-control <?= $pwErr ? 'is-invalid' : '' ?>" 
                                         id="password" name="password"
-                                        value="<?= htmlspecialchars($password, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                                        value="<?= htmlSafe($password) ?>">
                                 <div class="invalid-feedback"><?= $pwErr ?></div>
                             </div>
                             <div class="mb-4">
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
                                 <input  type="password" 
                                         class="form-control <?= $confirmPwErr ? 'is-invalid' : '' ?>" 
                                         id="confirm_password" name="confirm_password"
-                                        value="<?= htmlspecialchars($confirmPassword, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                                        value="<?= htmlSafe($confirmPassword) ?>">
                                 <div class="invalid-feedback"><?= $confirmPwErr ?></div>
                             </div>
                             <div class="mb-3">

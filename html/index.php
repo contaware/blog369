@@ -50,13 +50,13 @@ if (isset($_POST['submit'])) {
                 <input  type="text" 
                         class="form-control <?= $titleErr ? 'is-invalid' : '' ?>" 
                         id="title" name="title" 
-                        value="<?= htmlspecialchars($title, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?>">
+                        value="<?= htmlSafe($title) ?>">
                 <div class="invalid-feedback"><?= $titleErr ?></div>
             </div>
             <div class="mb-3">
                 <label for="body" class="form-label">Feedback</label>
                 <textarea   class="form-control <?= $bodyErr ? 'is-invalid' : '' ?>" 
-                            id="body" name="body"><?= htmlspecialchars($body, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8') ?></textarea>
+                            id="body" name="body"><?= htmlSafe($body) ?></textarea>
                 <div class="invalid-feedback"><?= $bodyErr ?></div>
             </div>
             <div class="mb-3">

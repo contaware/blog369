@@ -15,3 +15,8 @@ define('DB_PORT', '3306');
 define('DB_USER', 'blog');
 define('DB_PASS', '1234');
 define('DB_NAME', 'blogdb');
+
+// Important functions
+function htmlSafe($s) {
+    return htmlspecialchars($s, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');    
+}
