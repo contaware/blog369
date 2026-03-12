@@ -31,7 +31,7 @@ if (isset($_GET['id'])) {
         $res->bindValue(1, (int)$id, PDO::PARAM_INT);
         $res->execute();
         if ($res->rowCount() > 0)
-            header('Location: feedback.php');
+            header('Location: index.php');
         else
             die("Error: could not delete the entry with id=$id");
     }

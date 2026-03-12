@@ -70,8 +70,8 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
                             href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a  class="nav-link <?= $page === 'feedback.php' ? 'active' : '' ?>" 
-                            href="feedback.php">Feedbacks</a>
+                        <a  class="nav-link <?= $page === 'create.php' ? 'active' : '' ?>" 
+                            href="create.php">Create</a>
                     </li>
                     <li class="nav-item">
                         <a  class="nav-link <?= $page === 'about.php' ? 'active' : '' ?>" 

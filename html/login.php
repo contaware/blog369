@@ -2,9 +2,9 @@
 require_once __DIR__ . '/inc/configuration.php';
 require_once __DIR__ . '/inc/auth.php';
 
-// If already logged-in, head to home page
+// If already logged-in, head to create page
 if (isLoggedIn()) {
-    header('Location: index.php');
+    header('Location: create.php');
     exit;
 }
 
@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
         $pwErr = 'Password is required';
     if ($emailErr === '' && $pwErr === '') {
         if (loginUser($email, $password)) {
-            header('Location: index.php');
+            header('Location: create.php');
             exit;
         }
         else
