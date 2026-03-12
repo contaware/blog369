@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . '/inc/configuration.php';
 require_once __DIR__ . '/inc/database.php';
+
 function create_tables() {
     global $conn;
     $msg = '';
