@@ -40,11 +40,11 @@ if (isset($_POST['submit'])) {
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>
 <main>
-    <div class="container d-flex flex-column align-items-center">
-        <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid mb-3" alt="logo">
-        <h2>Feedback</h2>
+    <div class="py-4 container d-flex flex-column align-items-center">
+        <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid" alt="logo">
+        <h2 class="mt-2">Feedback</h2>
         <p class="lead text-center">Leave feedback on <?= BLOG_NAME ?></p>
-        <form method="post" class="mt-4 w-75">
+        <form method="post" class="mt-3 w-75">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input  type="text" 
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
                             id="body" name="body"><?= htmlSafe($body) ?></textarea>
                 <div class="invalid-feedback"><?= $bodyErr ?></div>
             </div>
-            <div class="mb-3">
+            <div>
                 <button type="submit" name="submit" class="btn btn-dark w-100">Submit</button>
             </div>
         </form>

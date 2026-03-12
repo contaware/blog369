@@ -13,6 +13,11 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1/font/bootstrap-icons.css" rel="stylesheet">
     <style>
+        main {
+            /* We need some spacing because of the fixed navbar */
+            padding-top: 56px;
+        }
+
         /* Breakpoint indicator (remove that for production) */
         body::before {
             content: "xs";
@@ -52,7 +57,7 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light mb-4">
+    <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.php"><?= BLOG_NAME ?></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">

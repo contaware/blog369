@@ -13,7 +13,7 @@ catch (Throwable $e) {
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>
 <main>
-    <div class="container d-flex flex-column align-items-center">
+    <div class="py-4 container d-flex flex-column align-items-center">
         <h2>Posted Feedbacks</h2>
         <?php if (empty($feedback)): ?>
             <p class="lead mt3">There is no feedback</p>

@@ -48,7 +48,7 @@ function create_tables() {
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>
 <main>
-    <div class="container d-flex flex-column align-items-center">
+    <div class="py-4 container d-flex flex-column align-items-center">
         <h2>Database maintenance</h2>
         <p class="text-center">
             <?php
