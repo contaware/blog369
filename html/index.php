@@ -30,8 +30,9 @@ catch (Throwable $e) {
                         </div>
                         <div class="col-sm-6 col-lg-4 order-lg-2">
                             <?php if (isCurrentUser($item['user_id']) || isAdmin()): ?>
-                                <div class="text-danger text-sm-end">
-                                    <?= "<a class=\"btn btn-danger\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
+                                <div class="text-sm-end">
+                                    <?= "<a class=\"btn btn-primary m-2\" href=\"update.php?id={$item['id']}\"><i class=\"bi bi-pencil-square\"></i></a>\n" ?>
+                                    <?= "<a class=\"btn btn-danger m-2\" href=\"delete.php?id={$item['id']}\"><i class=\"bi bi-trash\"></i></a>\n" ?>
                                 </div>
                             <?php endif; ?>
                         </div>
