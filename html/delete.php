@@ -28,3 +28,5 @@ if (isset($_GET['id'])) {
         die("PDO failed: {$e->getMessage()}\n");
     }
 }
+else
+    die("Error: provide an id to delete");
