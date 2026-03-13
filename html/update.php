@@ -88,6 +88,7 @@ else
             <div class="mb-3">
                 <label for="body" class="form-label">Feedback</label>
                 <textarea   class="form-control <?= $bodyErr ? 'is-invalid' : '' ?>" 
+                            rows="5" 
                             id="body" name="body"><?= htmlSafe($body) ?></textarea>
                 <div class="invalid-feedback"><?= $bodyErr ?></div>
             </div>

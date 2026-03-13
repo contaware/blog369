@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
     <div class="py-4 container d-flex flex-column align-items-center">
         <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid" alt="logo">
         <h2 class="mt-2">Create Feedback</h2>
-        <p class="lead text-center">Leave feedback on <?= BLOG_NAME ?></p>
+        <p class="lead text-center">Leave a feedback on <?= BLOG_NAME ?></p>
         <form method="post" class="mt-3 w-75">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -56,6 +56,7 @@ if (isset($_POST['submit'])) {
             <div class="mb-3">
                 <label for="body" class="form-label">Feedback</label>
                 <textarea   class="form-control <?= $bodyErr ? 'is-invalid' : '' ?>" 
+                            rows="5" 
                             id="body" name="body"><?= htmlSafe($body) ?></textarea>
                 <div class="invalid-feedback"><?= $bodyErr ?></div>
             </div>
