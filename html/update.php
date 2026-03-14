@@ -10,10 +10,7 @@ $titleErr = $bodyErr = '';
 
 // Process form data
 if (isset($_POST['id'])) {
-    // Check the given id
-    $id = $_POST['id'];
-    if (!is_numeric($id))
-        die("Error: a numeric id is required");
+    $id = (int)$_POST['id'];
 
     // Make sure we are allowed to update the given id
     if (($ret = can_change_feedback($id)) !== true)
@@ -46,16 +43,13 @@ if (isset($_POST['id'])) {
 }
 // Prepare the data to fill the form
 elseif (isset($_GET['id'])) {
-    // Check the given id
-    $id = $_GET['id'];
-    if (!is_numeric($id))
-        die("Error: a numeric id is required");
+    $id = (int)$_GET['id'];
 
     // Fetch feedback by given id
     try {
         $sql = "SELECT * FROM feedback WHERE id = ?";
         $res = $conn->prepare($sql);
-        $res->bindValue(1, (int)$id, PDO::PARAM_INT);
+        $res->bindValue(1, $id, PDO::PARAM_INT);
         $res->execute();
         $feedback = $res->fetch(PDO::FETCH_ASSOC);
         if ($feedback === false)

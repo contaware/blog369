@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
             $res = $conn->prepare($sql);
             $res->bindValue(1, $title);
             $res->bindValue(2, $body);
-            $res->bindValue(3, (int)(getCurrentUser()['id']), PDO::PARAM_INT);
+            $res->bindValue(3, getCurrentUser()['id'], PDO::PARAM_INT);
             $res->execute();
         }
         catch (Throwable $e) {
