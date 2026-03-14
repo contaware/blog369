@@ -76,7 +76,9 @@ else
         <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid" alt="logo">
         <h2 class="mt-2">Update Feedback</h2>
         <p class="lead text-center">Edit your feedback on <?= BLOG_NAME ?></p>
-        <form method="post" class="mt-3 w-75">
+        <!-- Set the action url explicitly to remove the id query parameter, 
+             since the id is already posted through the hidden field below. -->
+        <form method="post" action="update.php" class="mt-3 w-75">
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input  type="text" 
