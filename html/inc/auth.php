@@ -18,12 +18,11 @@ function registerUser($name, $email, $password, $role = 'user') {
     }
 
     // Insert user
-    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     try {
         $res = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)");
         $res->bindValue(1, $name);
         $res->bindValue(2, $email);
-        $res->bindValue(3, $hashedPassword);
+        $res->bindValue(3, password_hash($password, PASSWORD_DEFAULT));
         $res->bindValue(4, $role);
         $res->execute();
     }
