@@ -5,17 +5,10 @@ require_once __DIR__ . '/database.php';
 function registerUser($name, $email, $password, $role = 'user') {
     global $conn;
     
-    // Check whether email already exists
-    try {
-        $res = $conn->prepare("SELECT id FROM users WHERE email = ?");
-        $res->bindValue(1, $email);
-        $res->execute();
-        if ($res->fetch())
-            return false; // email already exists
-    }
-    catch (Throwable $e) {
-        die(db_maintenance_link($e));
-    }
+    // Make sure that user does not exist
+    $user = getUserByEmail($email);
+    if ($user)
+        return false;
 
     // Insert user
     try {
@@ -37,16 +30,7 @@ function loginUser($email, $password) {
     global $conn;
     
     // Fetch user from db
-    $user = null;
-    try {
-        $res = $conn->prepare("SELECT id, name, email, password, role, date FROM users WHERE email = ?");
-        $res->bindValue(1, $email);
-        $res->execute();
-        $user = $res->fetch(PDO::FETCH_ASSOC);
-    }
-    catch (Throwable $e) {
-        die(db_maintenance_link($e));
-    }
+    $user = getUserByEmail($email);
     
     // Add user to session if the pw is correct
     if ($user && password_verify($password, $user['password'])) {
@@ -97,6 +81,24 @@ function getUserById($id) {
     try {
         $res = $conn->prepare("SELECT id, name, email, role, date FROM users WHERE id = ?");
         $res->bindValue(1, (int)$id, PDO::PARAM_INT);
+        $res->execute();
+        $user = $res->fetch(PDO::FETCH_ASSOC);
+    }
+    catch (Throwable $e) {
+        die(db_maintenance_link($e));
+    }
+    
+    return $user;
+}
+
+function getUserByEmail($email) {
+    global $conn;
+    
+    // Fetch user from db
+    $user = null;
+    try {
+        $res = $conn->prepare("SELECT id, name, email, role, date FROM users WHERE email = ?");
+        $res->bindValue(1, $email);
         $res->execute();
         $user = $res->fetch(PDO::FETCH_ASSOC);
     }
