@@ -68,7 +68,7 @@ function logoutUser() {
 
 function isCurrentUser($id) {
     if (isLoggedIn()) {
-        return $_SESSION['user']['id'] === $id;
+        return $_SESSION['user']['id'] === (int)$id;
     }
     return false;
 }
