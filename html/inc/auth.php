@@ -90,7 +90,7 @@ function isCurrentUser($id) {
     return false;
 }
 
-function getUser($id) {
+function getUserById($id) {
     global $conn;
     
     // Fetch user from db

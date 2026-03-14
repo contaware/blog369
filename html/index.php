@@ -26,7 +26,7 @@ catch (Throwable $e) {
                     <div class="row text-center justify-content-between">
                         <div class="col-sm-6 col-lg-4 order-lg-0">
                             <div class="text-secondary text-sm-start">
-                                <em><?= htmlSafe(getUser($item['user_id'])['name']) ?></em><br>
+                                <em><?= htmlSafe(getUserById($item['user_id'])['name']) ?></em><br>
                                 <?= htmlSafe($item['date']) ?>
                             </div>
                         </div>
