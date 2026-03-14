@@ -61,7 +61,7 @@ if (isset($_POST['submit'])) {
                                 <?= $regDone ?>
                             </div>
                             <div class="text-center">
-                                <a href="login.php" class="btn btn-dark">Go to Login</a>
+                                <a href="login_user.php" class="btn btn-dark">Go to Login</a>
                             </div>
                         <?php else: ?>
                             <form method="post">
@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </form>
                             <div class="text-center">
-                                <p>Already have an account? <a href="login.php">Login here</a></p>
+                                <p>Already have an account? <a href="login_user.php">Login here</a></p>
                             </div>
                         <?php endif; ?>
                     </div>

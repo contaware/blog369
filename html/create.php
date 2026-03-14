@@ -5,7 +5,7 @@ require_once __DIR__ . '/inc/database.php';
 
 // If not logged-in, head to login page
 if (!isLoggedIn()) {
-    header('Location: login.php');
+    header('Location: login_user.php');
     exit;
 }
 

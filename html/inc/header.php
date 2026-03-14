@@ -91,8 +91,8 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a  class="nav-link <?= $page === 'login.php' ? 'active' : '' ?>" 
-                                href="login.php">Login</a>
+                            <a  class="nav-link <?= $page === 'login_user.php' ? 'active' : '' ?>" 
+                                href="login_user.php">Login</a>
                         </li>
                         <li class="nav-item">
                             <a  class="nav-link <?= $page === 'create_user.php' ? 'active' : '' ?>" 
