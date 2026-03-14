@@ -86,6 +86,7 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
                                 <li><span class="dropdown-item-text"><?= htmlSafe(getCurrentUser()['email']) ?></span></li>
                                 <li><span class="dropdown-item-text">Role: <?= htmlSafe(getCurrentUser()['role']) ?></span></li>
                                 <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="update_user.php?id=<?= getCurrentUser()['id'] ?>">Settings</a></li>
                                 <li><a class="dropdown-item" href="logout_user.php">Logout</a></li>
                             </ul>
                         </li>

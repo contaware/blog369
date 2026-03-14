@@ -26,6 +26,61 @@ function registerUser($name, $email, $password, $role = 'user') {
     return true;
 }
 
+function updateUser($id, $name, $email, $password = '', $role = '') {
+    global $conn;
+    
+    // Make sure that user exists
+    $user = getUserById($id);
+    if (!$user)
+        return false;
+
+    // Update user
+    try {
+        if ($password !== '' && $role !== '') {
+            $res = $conn->prepare("UPDATE users SET name = ?, email = ?, password = ?, role = ? WHERE id = ?");
+            $res->bindValue(1, $name);
+            $res->bindValue(2, $email);
+            $res->bindValue(3, password_hash($password, PASSWORD_DEFAULT));
+            $res->bindValue(4, $role);
+            $res->bindValue(5, (int)$id, PDO::PARAM_INT);
+        }
+        elseif ($password !== '') {
+            $res = $conn->prepare("UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?");
+            $res->bindValue(1, $name);
+            $res->bindValue(2, $email);
+            $res->bindValue(3, password_hash($password, PASSWORD_DEFAULT));
+            $res->bindValue(4, (int)$id, PDO::PARAM_INT);
+        }
+        elseif ($role !== '') {
+            $res = $conn->prepare("UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?");
+            $res->bindValue(1, $name);
+            $res->bindValue(2, $email);
+            $res->bindValue(3, $role);
+            $res->bindValue(4, (int)$id, PDO::PARAM_INT);
+        }
+        else {
+            $res = $conn->prepare("UPDATE users SET name = ?, email = ? WHERE id = ?");
+            $res->bindValue(1, $name);
+            $res->bindValue(2, $email);
+            $res->bindValue(3, (int)$id, PDO::PARAM_INT);
+        }
+        $res->execute();
+    }
+    catch (Throwable $e) {
+        die(db_maintenance_link($e));
+    }
+
+    // Update session vars
+    if (isCurrentUser($id)) {
+        $_SESSION['user']['name'] = $name;
+        $_SESSION['user']['email'] = $email;
+        if ($role !== '')
+            $_SESSION['user']['role'] = $role;
+    }
+
+    return true;
+}
+
 function loginUser($email, $password) {
     global $conn;
     
