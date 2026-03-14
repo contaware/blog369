@@ -95,8 +95,8 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
                                 href="login.php">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a  class="nav-link <?= $page === 'register.php' ? 'active' : '' ?>" 
-                                href="register.php">Register</a>
+                            <a  class="nav-link <?= $page === 'create_user.php' ? 'active' : '' ?>" 
+                                href="create_user.php">Register</a>
                         </li>
                     <?php endif; ?>
                 </ul>
