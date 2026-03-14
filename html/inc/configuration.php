@@ -9,6 +9,11 @@ session_start();
 // Set the wanted blog name
 define('BLOG_NAME', 'Blog 369');
 
+// Default admin user
+define('ADMIN_NAME', 'Administrator');
+define('ADMIN_USER', 'admin');
+define('ADMIN_PASS', '1234');
+
 // Database
 define('DB_HOST', 'db');
 define('DB_PORT', '3306');

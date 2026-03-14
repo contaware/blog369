@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
                         <form method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
-                                <input  type="email" 
+                                <input  type="text" 
                                         class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
                                         id="email" name="email" 
                                         value="<?= htmlSafe($email) ?>">

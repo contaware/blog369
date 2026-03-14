@@ -20,6 +20,9 @@ function create_tables() {
         )";
         $conn->exec($sql);
         $msg .= "Created 'users' table\n";
+        
+        // Register default admin user
+        registerUser(ADMIN_NAME, ADMIN_USER, ADMIN_PASS, 'admin');
     }
     catch (Throwable $e) {
         $msg .= "Could not create 'users' table: {$e->getMessage()}\n";
