@@ -71,7 +71,7 @@ else
             <div class="col-md-6 col-lg-4">
                 <div class="card shadow">
                     <div class="card-body">
-                        <h3 class="card-title text-center mb-4">Register</h3>
+                        <h3 class="card-title text-center mb-4">User Settings</h3>
                         <?php if ($updateErr): ?>
                             <div class="alert alert-danger">
                                 <?= $updateErr ?>
@@ -92,7 +92,7 @@ else
                                     <label for="name" class="form-label">Name</label>
                                     <input  type="text" 
                                             class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
-                                            id="name" name="name"
+                                            id="name" name="name" 
                                             value="<?= htmlSafe($name) ?>">
                                     <div class="invalid-feedback"><?= $nameErr ?></div>
                                 </div>
@@ -100,7 +100,7 @@ else
                                     <label for="email" class="form-label">Email</label>
                                     <input  type="email" 
                                             class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
-                                            id="email" name="email"
+                                            id="email" name="email" 
                                             value="<?= htmlSafe($email) ?>">
                                     <div class="invalid-feedback"><?= $emailErr ?></div>
                                 </div>
@@ -108,7 +108,9 @@ else
                                     <label for="password" class="form-label">Password</label>
                                     <input  type="password" 
                                             class="form-control <?= $pwErr ? 'is-invalid' : '' ?>" 
-                                            id="password" name="password"
+                                            id="password" name="password" 
+                                            placeholder="Leave empty to keep existing password" 
+                                            autocomplete="new-password" 
                                             value="<?= htmlSafe($password) ?>">
                                     <div class="invalid-feedback"><?= $pwErr ?></div>
                                 </div>
@@ -116,7 +118,9 @@ else
                                     <label for="confirm_password" class="form-label">Confirm Password</label>
                                     <input  type="password" 
                                             class="form-control <?= $confirmPwErr ? 'is-invalid' : '' ?>" 
-                                            id="confirm_password" name="confirm_password"
+                                            id="confirm_password" name="confirm_password" 
+                                            placeholder="Leave empty to keep existing password" 
+                                            autocomplete="new-password" 
                                             value="<?= htmlSafe($confirmPassword) ?>">
                                     <div class="invalid-feedback"><?= $confirmPwErr ?></div>
                                 </div>
