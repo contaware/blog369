@@ -92,12 +92,12 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
                         </li>
                     <?php else: ?>
                         <li class="nav-item">
-                            <a  class="nav-link <?= $page === 'login_user.php' ? 'active' : '' ?>" 
-                                href="login_user.php">Login</a>
-                        </li>
-                        <li class="nav-item">
                             <a  class="nav-link <?= $page === 'create_user.php' ? 'active' : '' ?>" 
                                 href="create_user.php">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a  class="nav-link <?= $page === 'login_user.php' ? 'active' : '' ?>" 
+                                href="login_user.php">Login</a>
                         </li>
                     <?php endif; ?>
                 </ul>
