@@ -38,11 +38,9 @@ if (isset($_POST['submit'])) {
                 <div class="card shadow">
                     <div class="card-body">
                         <h3 class="card-title text-center mb-4">Login</h3>
-                        <?php if ($loginErr): ?>
-                            <div class="alert alert-danger">
-                                <?= $loginErr ?>
-                            </div>
-                        <?php endif; ?>
+<?php if ($loginErr): ?>
+                        <div class="alert alert-danger"><?= $loginErr ?></div>
+<?php endif; ?>
                         <form method="post">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>

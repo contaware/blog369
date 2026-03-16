@@ -51,60 +51,56 @@ if (isset($_POST['submit'])) {
                 <div class="card shadow">
                     <div class="card-body">
                         <h3 class="card-title text-center mb-4">Register</h3>
-                        <?php if ($regErr): ?>
-                            <div class="alert alert-danger">
-                                <?= $regErr ?>
+<?php if ($regErr): ?>
+                        <div class="alert alert-danger"><?= $regErr ?></div>
+<?php endif; ?>
+<?php if ($regDone): ?>
+                        <div class="alert alert-success"><?= $regDone ?></div>
+                        <div class="text-center">
+                            <a href="login_user.php" class="btn btn-dark">Go to Login</a>
+                        </div>
+<?php else: ?>
+                        <form method="post">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input  type="text" 
+                                        class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
+                                        id="name" name="name"
+                                        value="<?= htmlSafe($name) ?>">
+                                <div class="invalid-feedback"><?= $nameErr ?></div>
                             </div>
-                        <?php endif; ?>
-                        <?php if ($regDone): ?>
-                            <div class="alert alert-success">
-                                <?= $regDone ?>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input  type="email" 
+                                        class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
+                                        id="email" name="email"
+                                        value="<?= htmlSafe($email) ?>">
+                                <div class="invalid-feedback"><?= $emailErr ?></div>
                             </div>
-                            <div class="text-center">
-                                <a href="login_user.php" class="btn btn-dark">Go to Login</a>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input  type="password" 
+                                        class="form-control <?= $pwErr ? 'is-invalid' : '' ?>" 
+                                        id="password" name="password"
+                                        value="<?= htmlSafe($password) ?>">
+                                <div class="invalid-feedback"><?= $pwErr ?></div>
                             </div>
-                        <?php else: ?>
-                            <form method="post">
-                                <div class="mb-3">
-                                    <label for="name" class="form-label">Name</label>
-                                    <input  type="text" 
-                                            class="form-control <?= $nameErr ? 'is-invalid' : '' ?>" 
-                                            id="name" name="name"
-                                            value="<?= htmlSafe($name) ?>">
-                                    <div class="invalid-feedback"><?= $nameErr ?></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email" class="form-label">Email</label>
-                                    <input  type="email" 
-                                            class="form-control <?= $emailErr ? 'is-invalid' : '' ?>" 
-                                            id="email" name="email"
-                                            value="<?= htmlSafe($email) ?>">
-                                    <div class="invalid-feedback"><?= $emailErr ?></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input  type="password" 
-                                            class="form-control <?= $pwErr ? 'is-invalid' : '' ?>" 
-                                            id="password" name="password"
-                                            value="<?= htmlSafe($password) ?>">
-                                    <div class="invalid-feedback"><?= $pwErr ?></div>
-                                </div>
-                                <div class="mb-4">
-                                    <label for="confirm_password" class="form-label">Confirm Password</label>
-                                    <input  type="password" 
-                                            class="form-control <?= $confirmPwErr ? 'is-invalid' : '' ?>" 
-                                            id="confirm_password" name="confirm_password"
-                                            value="<?= htmlSafe($confirmPassword) ?>">
-                                    <div class="invalid-feedback"><?= $confirmPwErr ?></div>
-                                </div>
-                                <div class="mb-3">
-                                    <button type="submit" name="submit" class="btn btn-dark w-100">Register</button>
-                                </div>
-                            </form>
-                            <div class="text-center">
-                                <p>Already have an account? <a href="login_user.php">Login here</a></p>
+                            <div class="mb-4">
+                                <label for="confirm_password" class="form-label">Confirm Password</label>
+                                <input  type="password" 
+                                        class="form-control <?= $confirmPwErr ? 'is-invalid' : '' ?>" 
+                                        id="confirm_password" name="confirm_password"
+                                        value="<?= htmlSafe($confirmPassword) ?>">
+                                <div class="invalid-feedback"><?= $confirmPwErr ?></div>
                             </div>
-                        <?php endif; ?>
+                            <div class="mb-3">
+                                <button type="submit" name="submit" class="btn btn-dark w-100">Register</button>
+                            </div>
+                        </form>
+                        <div class="text-center">
+                            <p>Already have an account? <a href="login_user.php">Login here</a></p>
+                        </div>
+<?php endif; ?>
                     </div>
                 </div>
             </div>
