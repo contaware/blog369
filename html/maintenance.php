@@ -55,12 +55,7 @@ function create_tables() {
     <div class="py-4 container d-flex flex-column align-items-center">
         <h2>Database maintenance</h2>
         <p class="text-center">
-            <?php
-            $out = create_tables();
-            $out = htmlSafe($out);
-            $out = nl2br($out);
-            echo $out;
-            ?>
+            <?= nl2br(htmlSafe(create_tables()), false) ?>
         </p>
     </div>
 </main>
