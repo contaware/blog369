@@ -17,7 +17,7 @@ catch (Throwable $e) {
     <div class="py-4 container d-flex flex-column align-items-center">
         <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid" alt="logo">
         <h2 class="mt-2">Feedbacks</h2>
-        <p class="lead text-center">View the feedbacks on <?= BLOG_NAME ?></p>
+        <p class="lead text-center">View the feedbacks on <?= htmlSafe(BLOG_NAME) ?></p>
 <?php if (empty($feedback)): ?>
         <p class="lead mt3">There is no feedback</p>
 <?php else: ?>

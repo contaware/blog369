@@ -8,7 +8,7 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><?= BLOG_NAME ?></title>
+<title><?= htmlSafe(BLOG_NAME) ?></title>
 <!-- For production use the corresponding *.min.css versions. -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.css" rel="stylesheet" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1/font/bootstrap-icons.css" rel="stylesheet">
@@ -59,7 +59,7 @@ $page = basename($_SERVER['SCRIPT_FILENAME']);
 <body>
 <nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="index.php"><?= BLOG_NAME ?></a>
+        <a class="navbar-brand" href="index.php"><?= htmlSafe(BLOG_NAME) ?></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>

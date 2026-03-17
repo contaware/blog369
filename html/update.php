@@ -69,7 +69,7 @@ else
     <div class="py-4 container d-flex flex-column align-items-center">
         <img src="img/round-icons-q5-Db2x3WVc-unsplash.png" style="width: 120px" class="img-fluid" alt="logo">
         <h2 class="mt-2">Update Feedback</h2>
-        <p class="lead text-center">Edit your feedback on <?= BLOG_NAME ?></p>
+        <p class="lead text-center">Edit your feedback on <?= htmlSafe(BLOG_NAME) ?></p>
         <!-- Set the action url explicitly to remove the id query parameter, 
              since the id is already posted through the hidden field below. -->
         <form method="post" action="update.php" class="mt-3 w-75">

@@ -1,7 +1,7 @@
 <?php require_once __DIR__ . '/configuration.php'; ?>
 <footer class="py-2 text-center">
     <div class="container">
-        <span>Copyright &copy; <?= new DateTimeImmutable()->format('Y'), ' &ndash; ', BLOG_NAME ?></span>
+        <span>Copyright &copy; <?= new DateTimeImmutable()->format('Y'), ' &ndash; ', htmlSafe(BLOG_NAME) ?></span>
     </div>
 </footer>
 <!-- Always place this before the body closing tag.
