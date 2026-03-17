@@ -33,7 +33,7 @@ catch (Throwable $e) {
                 <div class="col-sm-6 col-lg-4 order-lg-2">
 <?php if (isCurrentUser($item['user_id']) || isAdmin()): ?>
                     <div class="text-sm-end">
-                        <?= "<a class=\"btn btn-primary m-2\" href=\"update.php?id={$item['id']}\"><i class=\"bi bi-pencil-square\"></i></a>\n" ?>
+                        <a class="btn btn-primary m-2" href="update.php?id=<?= "{$item['id']}" ?>"><i class="bi bi-pencil-square"></i></a>
                         <button type="button" class="btn btn-danger m-2" data-bs-toggle="modal" data-bs-target="#delete-modal-<?= "{$item['id']}" ?>"><i class="bi bi-trash"></i></button>
                         <div class="modal fade" id="delete-modal-<?= "{$item['id']}" ?>" data-bs-backdrop="static">
                             <div class="modal-dialog modal-dialog-centered">
@@ -44,7 +44,7 @@ catch (Throwable $e) {
                                     </div>
                                     <div class="modal-body text-start">Do you really want to delete the '<?= htmlSafe($item['title']) ?>' feedback?</div>
                                     <div class="modal-footer">
-                                        <a href="<?= "delete.php?id={$item['id']}" ?>" class="btn btn-danger">Delete</a>
+                                        <a href="delete.php?id=<?= "{$item['id']}" ?>" class="btn btn-danger">Delete</a>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                                     </div>
                                 </div>
