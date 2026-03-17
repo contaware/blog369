@@ -9,7 +9,7 @@ try {
     $feedback = $res->fetchAll(PDO::FETCH_ASSOC);
 }
 catch (Throwable $e) {
-    die(db_maintenance_link($e));
+    die(dbMaintenanceLink($e));
 }
 ?>
 <?php require_once __DIR__ . '/inc/header.php'; ?>

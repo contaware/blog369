@@ -20,7 +20,7 @@ function registerUser($name, $email, $password, $role = 'user') {
         $res->execute();
     }
     catch (Throwable $e) {
-        die(db_maintenance_link($e));
+        die(dbMaintenanceLink($e));
     }
 
     return true;
@@ -67,7 +67,7 @@ function updateUser($id, $name, $email, $password = '', $role = '') {
         $res->execute();
     }
     catch (Throwable $e) {
-        die(db_maintenance_link($e));
+        die(dbMaintenanceLink($e));
     }
 
     // Update session vars
@@ -140,7 +140,7 @@ function getUserById($id) {
         $user = $res->fetch(PDO::FETCH_ASSOC);
     }
     catch (Throwable $e) {
-        die(db_maintenance_link($e));
+        die(dbMaintenanceLink($e));
     }
     
     return $user;
@@ -158,7 +158,7 @@ function getUserByEmail($email) {
         $user = $res->fetch(PDO::FETCH_ASSOC);
     }
     catch (Throwable $e) {
-        die(db_maintenance_link($e));
+        die(dbMaintenanceLink($e));
     }
     
     return $user;

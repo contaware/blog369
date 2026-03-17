@@ -10,11 +10,11 @@ catch (Throwable $e) {
     die("PDO failed: {$e->getMessage()}\n");
 }
 
-function db_maintenance_link($e) {
+function dbMaintenanceLink($e) {
     return "PDO failed: {$e->getMessage()}\n<br><a href=\"maintenance.php\">Go to Maintenance</a> page to solve the problem.\n";
 }
 
-function can_change_feedback($id) {
+function canChangeFeedback($id) {
     global $conn;
     
     try {

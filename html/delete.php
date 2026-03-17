@@ -7,7 +7,7 @@ if (isset($_GET['id'])) {
     $id = (int)$_GET['id'];
 
     // Make sure we are allowed to delete the given id
-    if (($ret = can_change_feedback($id)) !== true)
+    if (($ret = canChangeFeedback($id)) !== true)
         die($ret);
 
     // Delete the given id

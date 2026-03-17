@@ -13,7 +13,7 @@ if (isset($_POST['id'])) {
     $id = (int)$_POST['id'];
 
     // Make sure we are allowed to update the given id
-    if (($ret = can_change_feedback($id)) !== true)
+    if (($ret = canChangeFeedback($id)) !== true)
         die($ret);
 
     // Update the data
@@ -35,7 +35,7 @@ if (isset($_POST['id'])) {
             $res->execute();
         }
         catch (Throwable $e) {
-            die(db_maintenance_link($e));
+            die(dbMaintenanceLink($e));
         }
         header('Location: index.php');
         exit;

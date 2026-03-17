@@ -2,7 +2,7 @@
 require_once __DIR__ . '/inc/configuration.php';
 require_once __DIR__ . '/inc/database.php';
 
-function create_tables() {
+function createTables() {
     global $conn;
     $msg = '';
 
@@ -55,7 +55,7 @@ function create_tables() {
     <div class="py-4 container d-flex flex-column align-items-center">
         <h2>Database maintenance</h2>
         <p class="text-center">
-            <?= nl2br(htmlSafe(create_tables()), false) ?>
+            <?= nl2br(htmlSafe(createTables()), false) ?>
         </p>
     </div>
 </main>

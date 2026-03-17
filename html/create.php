@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
             $res->execute();
         }
         catch (Throwable $e) {
-            die(db_maintenance_link($e));
+            die(dbMaintenanceLink($e));
         }
         header('Location: index.php');
         exit;
